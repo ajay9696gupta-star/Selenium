@@ -57,7 +57,7 @@ public class TestSelenium15_Project_Locators_Selenium_ID_CLASSNAME_Name extends 
     @Description("TC2 - Verify that with invalid login, error message is displayed")
     @Test
 
-    public void elite_valid_login() throws InterruptedException {
+    public void elite_valid_login()  throws InterruptedException {
 
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -103,40 +103,48 @@ public class TestSelenium15_Project_Locators_Selenium_ID_CLASSNAME_Name extends 
         Thread.sleep(9000);
 
 
-        WebElement host1 =
-                driver.findElement(By.cssSelector("on24-elite-top-nav-bar"));
+        WebElement host1 = driver.findElement(By.cssSelector("on24-elite-top-nav-bar"));
 
-        SearchContext shadowRoot1 =
-                host1.getShadowRoot();
+        SearchContext shadowRoot1 = host1.getShadowRoot();
 
-        WebElement host2 =
-                shadowRoot1.findElement(
-                        By.cssSelector("on24-top-nav-main-navigation")
-                );
+        WebElement host2 = shadowRoot1.findElement(By.cssSelector("on24-top-nav-main-navigation"));
 
-        SearchContext shadowRoot2 =
-                host2.getShadowRoot();
+        SearchContext shadowRoot2 = host2.getShadowRoot();
 
-        WebElement engagementHub =
-                shadowRoot2.findElement(
-                        By.cssSelector("[data-testid='navTarget']")
-                );
+        WebElement engagementHub = shadowRoot2.findElement(By.cssSelector("[data-testid='navEngagementHub']"));
 
         engagementHub.click();
+        Thread.sleep(5000);
 
 
-
-
-
-
-       // driver.findElement(By.id("toggle-button-label")).click();
-
-       // driver.findElement(By.id("toggle-button-label")).click();
+        // Select content tab
+        driver.findElement(By.xpath("//span[text()='Content']")).click();
         Thread.sleep(9000);
 
-       // driver.findElement(By.className("dropdown-item")).click();
+        driver.findElement(By.xpath("//button[@aria-label='add content button']")).click();
+        Thread.sleep(5000);
 
-      //  Thread.sleep(9000);
+
+       WebElement Search_content = driver.findElement(By.xpath("//input[@placeholder='Search for content']"));
+       Search_content.sendKeys("Copy of Ajay Webcast 15 july 2026");
+
+
+       // Select checkbox
+       driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+       Thread.sleep(5000);
+
+        driver.findElement(By.xpath("//button[@aria-label='Close']")).click();
+        Thread.sleep(5000);
+
+       // Click publish button
+       driver.findElement(By.xpath("//button[contains(@class,'save-btn')]")).click();
+
+        Thread.sleep(9000);
+
+       WebElement enter_text_in_search_field = driver.findElement(By.xpath("//input[@placeholder='Search']"));
+       enter_text_in_search_field.sendKeys("Copy of Ajay Webcast 15 july 2026");
+
+
 
         closeBrowser(driver);
 
