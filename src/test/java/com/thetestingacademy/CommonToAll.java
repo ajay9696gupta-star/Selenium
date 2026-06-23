@@ -1,7 +1,12 @@
 package com.thetestingacademy;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CommonToAll {
 
@@ -29,6 +34,12 @@ public class CommonToAll {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void waitForVisiblisty(WebDriver driver, int timeInSecond, String xpath){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeInSecond));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(xpath)));
+
     }
 
 }
